@@ -7,10 +7,10 @@ Définition des constantes de styles :
 /* Hauteur de la top barre :*/
 --top-bar-height: 70px;
 /* Définition des couleurs de la charte graphique : */
---green-charter: rgb(138, 160, 23);
---brown-charter: rgb(74, 64, 56);
---dark-charter: rgb(46, 46, 46);
---purple-charter: rgb(126, 31, 162);
+--green-charter: rgb(93, 194, 194);
+--brown-charter: rgb(216, 213, 211);
+--dark-charter: rgb(214, 214, 214);
+--purple-charter: rgb(209, 144, 233);
 --dark-side-charter: rgb(35, 35, 35);
 }
 /*
