@@ -19,23 +19,34 @@
                 <tbody>
                     @for (item of ingredients; track item.id) {
                     <tr>
+                        @if (ingredientSelectionne?.id === item.id) {
+                        <td>{{ item.id }}</td>
+                        <td><input [(ngModel)]="ingredientSelectionne!.nom" class="form-control form-control-sm"></td>
+                        <td><input type="number" [(ngModel)]="ingredientSelectionne!.sapo"
+                                class="form-control form-control-sm"></td>
+                        <td><input type="number" [(ngModel)]="ingredientSelectionne!.ins"
+                                class="form-control form-control-sm"></td>
+                        <td><input type="number" [(ngModel)]="ingredientSelectionne!.iode"
+                                class="form-control form-control-sm"></td>
+                        <td class="text-center">
+                            <button (click)="saveIngredient()" class="btn btn-sm btn-successme-1"><i
+                                    class="bi bi-check-lg"></i></button>
+                            <button (click)="ingredientSelectionne = null" class="btn btn-smbtn-secondary"><i
+                                    class="bi bi-x-lg"></i></button>
+                        </td>
+                        } @else {
                         <td>{{ item.id }}</td>
                         <td><strong>{{ item.nom }}</strong></td>
                         <td>{{ item.sapo }}</td>
                         <td>{{ item.ins }}</td>
                         <td>{{ item.iode }}</td>
                         <td class="text-center">
-                            <button class="btn btn-sm btn-warning me-2">
-                                <i class="bi bi-pencil-fill"></i>
-                                <!-- TODO 3 : Ouvrir le modal ou insérer un
-formulaire dans ligne pour permettre la saisi -->
-                            </button>
-                            <button class="btn btn-sm btn-danger">
-                                <i class="bi bi-trash-fill"></i>
-                                <!-- TODO 2 : Récupérer et appeler la méthode de
-suppression de la logique -->
-                            </button>
+                            <button (click)="editerIngredient(item)" class="btn btn-sm btn-warning me-2"><i
+                                    class="bi bi-pencil-fill"></i></button>
+                            <button (click)="deleteIngredient(item.id)" class="btn btn-sm btn-danger"><i
+                                    class="bi bi-trash-fill"></i></button>
                         </td>
+                        }
                     </tr>
                     }
                     <!-- Message affiché si problème accès API -->
@@ -49,14 +60,31 @@ suppression de la logique -->
                         </td>
                     </tr>
                     }
+                    @if (ingredientSelectionne?.id === 0) {
+                    <tr class="table-info">
+                        <td>NEW</td>
+                        <td><input [(ngModel)]="ingredientSelectionne!.nom" placeholder="Nom..."
+                                class="form-control form-control-sm"></td>
+                        <td><input type="number" [(ngModel)]="ingredientSelectionne!.sapo"
+                                class="form-control form-control-sm"></td>
+                        <td><input type="number" [(ngModel)]="ingredientSelectionne!.ins"
+                                class="form-control form-control-sm"></td>
+                        <td><input type="number" [(ngModel)]="ingredientSelectionne!.iode"
+                                class="form-control form-control-sm"></td>
+                        <td class="text-center">
+                            <button (click)="saveIngredient()" class="btn btn-sm btn-success me-1">Créer</button>
+                            <button (click)="ingredientSelectionne = null"
+                                class="btn btn-sm btn-secondary">Annuler</button>
+                        </td>
+                    </tr>
+                    }
+
                 </tbody>
             </table>
         </div>
-        <div class="card-footer bg-success ">
-            <button class="btn btn-sm btn-light fw-bold">
-                <i class="bi bi-plus-circle"></i> Ingrédient
-                <!-- TODO 4: Ajouter un modale pour l'ajout d'un nouvel ingrédient
-OU insérer une ligne formulaire -->
+        <div class="card-footer bg-success">
+            <button class="btn btn-sm btn-light fw-bold" (click)="creerNouvelIngredient()">
+                <i class="bi bi-plus-circle"></i> Ajouter un ingrédient
             </button>
         </div>
     </div>
