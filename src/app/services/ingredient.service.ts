@@ -23,9 +23,21 @@ getIngredients(): Observable < Ingredient[] > {
 getIngredientById(id: number): Observable < Ingredient > {
   return this.http.get<Ingredient>(`${this.API_URL_INGREDIENT}/${id}`);
 }
-// TODO : Créer plus tard les méthodes manquantes :
+
 // - deleteIngredients(id: number)
+deleteIngredient(id: number): Observable < void > {
+  return this.http.delete<void>(`${this.API_URL_INGREDIENT}/${id}`);
+}
 // - deleteAllIngredients()
+deleteAllIngredients(): Observable < void > {
+  return this.http.delete<void>(this.API_URL_INGREDIENT);
+}
 // - addIngredient(ingredient: Ingredient)
+addIngredient(ingredient: Ingredient): Observable < Ingredient > {
+  return this.http.post<Ingredient>(this.API_URL_INGREDIENT, ingredient);
+}
 // - updateIngredient(id: number, ingredient: Ingredient)
+updateIngredient(ingredient: Ingredient): Observable < Ingredient > {
+  return this.http.put<Ingredient>(`${this.API_URL_INGREDIENT}/${ingredient.id}`, ingredient); 
+}
 }
