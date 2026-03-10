@@ -1,7 +1,10 @@
 .app-header {
+    width: 100%;
+    
     .top-bar-fluid {
         height: var(--top-bar-height);
         background: var(--dark-side-charter);
+        width: 100%;
     }
 
     .top-bar-content {
@@ -10,9 +13,11 @@
         border-left: solid 1px var(--green-charter);
         border-right: solid 1px var(--green-charter);
         display: flex;
-        /* Ajout pour aligner les éléments */
         align-items: center;
-        /* Centre verticalement les éléments */
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0; /* Garder p-0 du HTML */
     }
 
     .logo {
@@ -23,7 +28,6 @@
         display: flex;
         height: 30px;
         border-radius: 15px;
-        /* align-items: center; */
         background: var(--green-charter);
         padding: 0px;
 
@@ -47,19 +51,16 @@
             z-index: 2;
         }
 
-        /* Style du menu dropdown */
         .dropdown-menu {
             z-index: 1021;
             min-width: 150px;
             box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
         }
 
-        /* Espacement des éléments */
         .dropdown-item {
             padding: 5px 10px;
         }
 
-        /* Style au survol */
         .dropdown-item:hover {
             background: var(--green-charter);
             color: white;
