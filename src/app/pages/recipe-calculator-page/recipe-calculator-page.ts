@@ -13,6 +13,8 @@ import { RecetteService } from '../../services/recette.service';
   styleUrl: './recipe-calculator-page.css',
 })
 export class RecipeCalculatorPage implements OnInit {
+  // Affichage de la recette après son calcul :
+  public recetteAffichee: Recette | null = null;
   // Liste des ingrédients disponibles :
   public ingredientsDispo: Ingredient[] = [];
   // Ingrédients sélectionnés :
@@ -95,10 +97,13 @@ export class RecipeCalculatorPage implements OnInit {
     // 3. Envoi de la recette à l'API via le service recette :
     this.recetteService.createRecette(recetteEnvoyee).subscribe({
       next: (recette: Recette) => {
-        console.log('Recette reçue du backend :', recette);
+        this.recetteAffichee = recette; // On récupère la recette avec lesscores
+        alert("Recette calculée et enregistrée avec succès !"); // Messagesuccès
+        //console.log('Recette reçue du backend :', recette);
       },
       error: (err) => {
-        console.error('Erreur lors de la création de la recette :', err);
+        alert("Erreur lors du calcul. Vérifier vos données."); // Message échec
+        //console.error('Erreur lors de la création de la recette :',err);
       }
     });
   }
