@@ -9,7 +9,21 @@ import { CommonModule } from '@angular/common';
   styleUrl: './recipe-manager-page.css',
 })
 export class RecipeManagerPage implements OnInit {
+  // Propriété pour stocker la recette à afficher dans la modale
+  public recetteSelectionnee: Recette | null = null;
   public recettes: Recette[] = []
+  /**
+  * Définit la recette sélectionnée pour l'affichage des détails
+  */
+  ouvrirModale(recette: Recette): void {
+    this.recetteSelectionnee = recette;
+  }
+  /**
+  * Réinitialise la sélection à la fermeture
+  */
+  fermerModale(): void {
+    this.recetteSelectionnee = null;
+  }
   constructor(private recetteService: RecetteService) { }
   ngOnInit(): void {
     this.chargerRecettes();
