@@ -13,9 +13,9 @@ import { Router } from '@angular/router';
 export class SubscribePage {
   // Modèle pour le formulaire d'inscription
   public credentials = {
-    identifier: '',
-    password: '',
-    confirmPassword: ''
+    username: '',
+    email: '',
+    password: ''
   };
 
   // Gestion de l'affichage de l'erreur
@@ -34,11 +34,11 @@ export class SubscribePage {
     this.errorMessage = null;
     this.successMessage = null;
 
-    // Vérification que les mots de passe correspondent
+    /* Vérification que les mots de passe correspondent
     if (this.credentials.password !== this.credentials.confirmPassword) {
       this.errorMessage = "Les mots de passe ne correspondent pas.";
       return;
-    }
+    }*/
 
     // Vérification que le mot de passe a une longueur minimale (optionnel)
     if (this.credentials.password.length < 6) {
