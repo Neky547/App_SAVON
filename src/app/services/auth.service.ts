@@ -12,6 +12,12 @@ export class AuthService {
   public isAuthenticated = signal<boolean>(this.hasToken());
   constructor(private http: HttpClient) { }
 
+  // Méthode d'inscription
+  subscribe(credentials: any): Observable<any> {
+    return this.http.post(`${this.API_URL}/register`, credentials);
+  }
+
+  // Méthode de connexion
   login(credential: any): Observable<any> {
     return this.http.post(`${this.API_URL}/login`, credential).pipe(
       tap((response: any) => {
@@ -39,7 +45,7 @@ export class AuthService {
     }
   }
 
- 
+
   getUserIdentifier(): string {
     const decoded = this.getDecodedToken();
     return decoded ? decoded.sub : 'Invité';
@@ -50,7 +56,7 @@ export class AuthService {
     if (!decoded || decoded.role) return false;
     return decoded.roles.includes(role);
   }
- 
+
   getUserFullInfo() {
     const decoded = this.getDecodedToken();
     if (!decoded) return null;

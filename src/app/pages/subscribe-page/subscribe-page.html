@@ -11,19 +11,80 @@
                         {{ errorMessage }}
                     </div>
                     }
+                    @if (successMessage) {
+                    <div class="alert alert-success p-2 small">
+                        {{ successMessage }}
+                    </div>
+                    }
                     <form (ngSubmit)="onSubmit()">
                         <div class="mb-3">
                             <label class="form-label">Identifiant (Email)</label>
-                            <input type="text" name="username" class="form-control" [(ngModel)]="credentials.identifier" required>
+                            <input 
+                                type="email" 
+                                name="identifier" 
+                                class="form-control" 
+                                [(ngModel)]="credentials.identifier" 
+                                required
+                                email
+                                #identifier="ngModel">
+                            @if (identifier.invalid && identifier.touched) {
+                            <div class="text-danger small mt-1">
+                                @if (identifier.errors?.['required']) {
+                                <span>L'email est requis</span>
+                                }
+                                @if (identifier.errors?.['email']) {
+                                <span>Format d'email invalide</span>
+                                }
+                            </div>
+                            }
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Mot de passe</label>
-                            <input type="password" name="password" class="form-control" [(ngModel)]="credentials.password" required>
+                            <input 
+                                type="password" 
+                                name="password" 
+                                class="form-control" 
+                                [(ngModel)]="credentials.password" 
+                                required
+                                minlength="6"
+                                #password="ngModel">
+                            @if (password.invalid && password.touched) {
+                            <div class="text-danger small mt-1">
+                                @if (password.errors?.['required']) {
+                                <span>Le mot de passe est requis</span>
+                                }
+                                @if (password.errors?.['minlength']) {
+                                <span>Minimum 6 caractères</span>
+                                }
+                            </div>
+                            }
                         </div>
-                        <button type="submit" class="btn btn-primary w-100">
+                        <div class="mb-3">
+                            <label class="form-label">Confirmer le mot de passe</label>
+                            <input 
+                                type="password" 
+                                name="confirmPassword" 
+                                class="form-control" 
+                                [(ngModel)]="credentials.confirmPassword" 
+                                required
+                                #confirmPassword="ngModel">
+                            @if (confirmPassword.touched && credentials.password !== credentials.confirmPassword) {
+                            <div class="text-danger small mt-1">
+                                Les mots de passe ne correspondent pas
+                            </div>
+                            }
+                        </div>
+                        <button 
+                            type="submit" 
+                            class="btn btn-primary w-100"
+                            [disabled]="credentials.password !== credentials.confirmPassword || !credentials.identifier || !credentials.password">
                             S'inscrire
                         </button>
                     </form>
+                </div>
+                <div class="card-footer text-center small">
+                    Déjà un compte ? <a href="/login">Se connecter</a>
+                </div>
             </div>
         </div>
     </div>
