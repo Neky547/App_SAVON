@@ -32,28 +32,26 @@ navbar navbar-expand-sm p-0 mb-4">
                         Mes recettes
                     </a>
                 </li>
-                <!-- Accès gestion des utilisateurs pour l'administrateur
+                <!-- Accès gestion des utilisateurs pour l'administrateur -->
                 <li class="nav-item admin-only">
-                <a class="nav-link"
-                routerLink="users-manager"
-                routerLinkActive="active"
-                title="Gérer les utilisateurs">
-                <i class="bi bi-people-fill"> </i>
-                Utilisateurs
-                </a>
+                    <a class="nav-link" routerLink="users-manager" routerLinkActive="active"
+                        title="Gérer les utilisateurs">
+                        <i class="bi bi-people-fill"> </i>
+                        Utilisateurs
+                    </a>
                 </li>
-                -->
+
                 <!-- Accès gestion des ingrédients pour l'administrateur -->
                 @if (authService.isAuthenticated()) {
                 @if (authService.hasRole('ROLE_ADMIN')) {
-                    <li class="nav-item admin-only">
-                        <a class="nav-link" routerLink="ingredients-manager" routerLinkActive="active"
-                            title="Gérer les ingrédients (corps gras et agentsalcalins)">
-                            <i class="bi bi-collection-fill"> </i>
-                            Ingrédients
-                        </a>
-                    </li>
-                    }
+                <li class="nav-item admin-only">
+                    <a class="nav-link" routerLink="ingredients-manager" routerLinkActive="active"
+                        title="Gérer les ingrédients (corps gras et agentsalcalins)">
+                        <i class="bi bi-collection-fill"> </i>
+                        Ingrédients
+                    </a>
+                </li>
+                }
                 }
             </ul>
         </div>
