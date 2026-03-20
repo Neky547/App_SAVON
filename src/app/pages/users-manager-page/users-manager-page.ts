@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UtilisateurService } from '../../services/utilisateur.service';
+
 
 @Component({
   selector: 'app-users-manager-page',
@@ -7,18 +9,44 @@ import { Component } from '@angular/core';
   templateUrl: './users-manager-page.html',
   styleUrl: './users-manager-page.css',
 })
-export class UsersManagerPage {
-  public users: any[] = [
-    { id: 1, nom: 'Admin', email: 'admin@email.com', role: 'Administrateur' },
-    { id: 2, nom: 'Nekena', email: 'utilisateur@email.com', role: 'Utilisateur' },
-    { id: 3, nom: 'John Doe', email: 'johndoe@email.com', role: 'Utilisateur' },
-  ];
-  createUser() {
+export class UsersManagerPage implements OnInit {
+  public users: any[] = [];
+
+  constructor(private utilisateurService: UtilisateurService) {}
+
+  ngOnInit(): void {
+    this.chargerUtilisateurs();
+  }
+
+  chargerUtilisateurs(): void {
+    this.utilisateurService.getUtilisateurs().subscribe({
+      next: (data: any) => {
+        this.users = data;
+        console.log('Utilisateurs chargés avec succès', data);
+      },
+      error: (err) => {
+        console.error('Erreur lors du chargement des utilisateurs', err);
+      }
+    });
+  }
+
+  createUser(): void {
     // Logique pour créer un nouvel utilisateur
     console.log('Créer un nouvel utilisateur');
   }
-  deleteUser(userId: number) {
-    // Logique pour supprimer un utilisateur
-    console.log(`Supprimer l'utilisateur avec l'ID: ${userId}`);
+
+  supprimerUtilisateur(userId: number): void {
+    if (confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')) {
+      this.utilisateurService.deleteUtilisateur(userId).subscribe({
+        next: () => {
+          console.log(`Utilisateur ${userId} supprimé avec succès`);
+          // Recharger la liste après suppression
+          this.chargerUtilisateurs();
+        },
+        error: (err) => {
+          console.error(`Erreur lors de la suppression de l'utilisateur ${userId}`, err);
+        }
+      });
+    }
   }
 }
