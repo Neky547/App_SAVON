@@ -17,12 +17,8 @@ export class UsersManagerPage {
     // Logique pour créer un nouvel utilisateur
     console.log('Créer un nouvel utilisateur');
   }
-  editUser(user: any) {
-    // Logique pour éditer les informations de l'utilisateur
-    console.log('Éditer l\'utilisateur', user);
-  }
-  deleteUser(user: any) {
-    // Logique pour supprimer l'utilisateur
-    console.log('Supprimer l\'utilisateur', user);
+  deleteUser(userId: number) {
+    // Logique pour supprimer un utilisateur
+    console.log(`Supprimer l'utilisateur avec l'ID: ${userId}`);
   }
 }
