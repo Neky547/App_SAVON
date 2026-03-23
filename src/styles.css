@@ -7,19 +7,20 @@ Définition des constantes de styles :
 /* Hauteur de la top barre :*/
 --top-bar-height: 70px;
 /* Définition des couleurs de la charte graphique : */
---green-charter: rgb(93, 194, 194);
---brown-charter: rgb(216, 213, 211);
---dark-charter: rgb(214, 214, 214);
---purple-charter: rgb(209, 144, 233);
+--green-charter: rgb(255, 232, 188);
+--brown-charter: rgb(129, 94, 71);
+--dark-charter: rgb(129, 94, 71);
+--purple-charter: rgba(209, 144, 233, 0);
 --dark-side-charter: rgb(35, 35, 35);
 }
 /*
 --------------------
+
 Définition du fond :
 --------------------
 */
 body {
-background-image: /*linear-gradient(0deg, rgba(109, 206, 193, 0.9), rgba(133, 196, 247, 0.9)), */url('../public/background3.jpg');
+background-image: /*linear-gradient(0deg, rgba(109, 206, 193, 0.9), rgba(133, 196, 247, 0.9)), */url('../public/background4.jpg');
 background-position: center;
 background-repeat: no-repeat;
 background-size: cover; /*contain*/
