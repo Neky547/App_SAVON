@@ -1,6 +1,6 @@
 <nav class="nav-bar-fluid container-fluid
 navbar navbar-expand-sm p-0 mb-4">
-    <div class="container-xl nav-bar-content p-0">
+    <div class="container-fluid nav-bar-content p-0">
         <!-- Bouton Toggle (menu hamburger) : -->
         <button class="navbar-toggler ms-3 mt-2 mb-2" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,8 +43,11 @@ navbar navbar-expand-sm p-0 mb-4">
                 
 
                 <!-- Accès gestion des ingrédients pour l'administrateur -->
-                @if (authService.isAuthenticated()) {
+                <!-- @if (authService.isAuthenticated()) {
                 @if (authService.hasRole('ROLE_ADMIN')) {
+                
+                }
+                } -->
                 <li class="nav-item admin-only">
                     <a class="nav-link" routerLink="ingredients-manager" routerLinkActive="active"
                         title="Gérer les ingrédients (corps gras et agentsalcalins)">
@@ -52,8 +55,6 @@ navbar navbar-expand-sm p-0 mb-4">
                         Ingrédients
                     </a>
                 </li>
-                }
-                }
             </ul>
         </div>
     </div>
