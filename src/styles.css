@@ -19,7 +19,7 @@ Définition du fond :
 --------------------
 */
 body {
-background-image: linear-gradient(0deg, rgba(109, 206, 193, 0.9), rgba(133, 196, 247, 0.9)), url('/public/background.jpg');
+background-image: /*linear-gradient(0deg, rgba(109, 206, 193, 0.9), rgba(133, 196, 247, 0.9)), */url('../public/background3.jpg');
 background-position: center;
 background-repeat: no-repeat;
 background-size: cover; /*contain*/
