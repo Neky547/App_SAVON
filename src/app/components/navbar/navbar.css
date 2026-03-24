@@ -13,9 +13,7 @@
 
     .nav-bar-content {
         background: var(--dark-charter);
-        border-top: 4px solid var(--green-charter);
-        border-left: solid 1px var(--green-charter);
-        border-right: solid 1px var(--green-charter);
+
 
         .nav-link {
             color: rgb(255, 255, 255);

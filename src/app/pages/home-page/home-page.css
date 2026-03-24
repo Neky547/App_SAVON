@@ -50,7 +50,7 @@
     }
 
     a {
-        color: var(--purple-charter);
+        color: rgb(151, 82, 26);
         /* Change la couleur des liens */
         text-decoration: none;
         /* Supprime le soulignement */
